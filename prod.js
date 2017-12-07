@@ -115,7 +115,7 @@ module.exports = function e(env) {
         parallel: true,
         sourceMap: false,
         uglifyOptions: {
-          ecma: 6,
+          ecma: 8,
           output: {
             comments: false
           }
