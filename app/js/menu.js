@@ -149,35 +149,6 @@ const updateDB = function(database = "", dataset = {}) {
           classes: "yellow darken-2"
         });
         offlineUp(database);
-        // try to upload offline data to DB when online
-        // if (window.localStorage[storageVariable] && navigator.onLine) {
-        //   offlineData = JSON.parse(
-        //     window.localStorage.getItem(storageVariable)
-        //   );
-        //   client
-        //     .login()
-        //     .then(() => db.collection(database).insertMany(offlineData))
-        //     .then(result => {
-        //       window.localStorage.removeItem(storageVariable);
-        //       console.log("[MongoDB Stitch] Offline Updated:", result, dataset);
-        //       M.toast({
-        //         html: "Reports Uploaded: " + offlineData.length,
-        //         displayLength: 1000,
-        //         classes: "green darken-2"
-        //       });
-        //     })
-        //     .catch(error => {
-        //       console.error("[MongoDB Stitch] Error: ", error);
-        //       M.toast({
-        //         html: "Will Retry in 30 Seconds",
-        //         displayLength: 4000,
-        //         classes: "yellow darken-2"
-        //       });
-        //       window.offlineUploadAttempt = setTimeout(() => {
-        //         updateDB(database);
-        //       }, 30000);
-        //     });
-        // }
       });
   }
 };
@@ -582,46 +553,13 @@ class Properties {
         }
         geoJSONPoints.push(queryDBResult[i].Location);
       }
-      // let trails = {
-      //   pointToLayer: function(feature, latlng) {
-      //     let popInfo = `${feature.properties.description}<br>`;
-      //     if (!feature.properties.photo === false) {
-      //       popInfo += `${feature.properties.photo}`;
-      //     }
-      //     return new L.circleMarker(latlng, {
-      //       radius: 14,
-      //       fillColor: "#0d48a1",
-      //       color: "#f5f5f5",
-      //       weight: 3,
-      //       opacity: 1,
-      //       fillOpacity: 0.7
-      //     }).bindPopup(`${popInfo}`);
-      //   }
-      // };
-      // let tumlare = {
-      //   pointToLayer: function(feature, latlng) {
-      //     let popInfo = `${feature.properties.description}<br>`;
-      //     if (!feature.properties.photo === false) {
-      //       popInfo += `${feature.properties.photo}`;
-      //     }
-      //     // if (feature.properties.radius < 64) {
-      //     return new L.circleMarker(latlng, {
-      //       radius: 14,
-      //       fillColor: "#0d48a1",
-      //       color: "#f5f5f5",
-      //       weight: 3,
-      //       opacity: 1,
-      //       fillOpacity: 0.7
-      //     }).bindPopup(`${popInfo}`);
-      //   }
-      // };
+
       let options = {
         pointToLayer: function(feature, latlng) {
           let popInfo = `${feature.properties.description}<br>`;
           if (!feature.properties.photo === false) {
             popInfo += `${feature.properties.photo}`;
           }
-          // if (feature.properties.radius < 64) {
           return new L.circleMarker(latlng, {
             radius: 14,
             fillColor: "#0d48a1",
@@ -632,14 +570,7 @@ class Properties {
           }).bindPopup(`${popInfo}`);
         }
       };
-      // let options = {};
-      // if (queryDBResult.length > 0) {
-      //   if (!queryDBResult[0].ObservationArea === false) {
-      //     options = tumlare;
-      //   } else {
-      //     options = trails;
-      //   }
-      // }
+
       // Passing all points to cluster marker with the above mission display options
       let reports = L.geoJSON(geoJSONPoints, options);
       console.log("[Leaflet] Mapped:", geoJSONPoints);
@@ -679,18 +610,13 @@ class Properties {
 
       map.addLayer(markers);
       markers.on("spiderfied", function(a) {
-        // console.log("cluster ", a);
         a.cluster._icon.classList.remove("fadeIn");
         a.cluster._icon.classList.add("fadeOut");
       });
       markers.on("unspiderfied", function(a) {
-        // console.log("cluster ", a);
         a.cluster._icon.classList.remove("fadeOut");
         a.cluster._icon.classList.add("fadeIn");
       });
-      // markers.on("clusterclick", function(a) {
-      //   a.layer.zoomToBounds({ padding: [48, 48], maxZoom: 16 });
-      // });
     };
 
     // Displays on Front Page
@@ -749,6 +675,4 @@ window.addEventListener("DOMContentLoaded", function() {
   }, 290);
 });
 
-// Additional missions go in separate files and require this file. Add them to ./../entry.js
-// test = new Mission({});
 module.exports = Mission;

@@ -1,18 +1,18 @@
 const Menu = require("./menu");
 
-window.properties = new Mission({
-  shortName: "properties",
-  title: "Properties",
-  databaseCollection: "Properties",
+window.propiedades = new Mission({
+  shortName: "propiedades",
+  title: "Propiedades",
+  databaseCollection: "Propiedades",
   congratulatoryMessage: "Thanks for your help!",
-  description: "Property values",
+  description: "Informacion de propiedades.",
   image: require("../img/trail.jpg"),
   monitorSuccess: function() {
     let content = ``;
     content += `<div class="row">
   <form class="" onsubmit="return false">
     <h3 class="col s12">${this.title}</h3>
-    <h5 class="col s12">Georeference</h5>
+    <h5 class="col s12">Datos generales</h5>
     <div class="col s12">
     <div id="map"></div>
     </div>
@@ -21,13 +21,13 @@ window.properties = new Mission({
         <input disabled id="Latitude" type="text" value="${
           window.geoReference.lat
         }">
-        <label for="Latitude">Latitude</label>
+        <label for="Latitude">Latitud</label>
       </div>
       <div class="input-field col s6 m3">
         <input disabled id="Longitude" type="text" value="${
           window.geoReference.long
         }">
-        <label for="Longitude">Longitude</label>
+        <label for="Longitude">Longitud</label>
       </div>
       <p class="col s12 m6 l4">
         <label>
