@@ -16,7 +16,6 @@ window.enableBox = function() {
 
 window.confetti = function() {
   window.confettiId = document.getElementById("confettiId");
-  // console.log("[Confetti]", confettiId);
   confettiId.width = window.innerWidth;
   confettiId.height = window.innerHeight;
 

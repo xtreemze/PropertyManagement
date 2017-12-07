@@ -51,36 +51,6 @@ window.propiedades = new Mission({
     </p>
     <p class="col s12 m6 l4">
       <label>
-        <input id="Bifurcation" type="checkbox">
-        <span>Bifurcation - Widening</span>
-      </label>
-    </p>
-    <p class="col s12 m6 l4">
-      <label>
-        <input id="FallenTrees" type="checkbox">
-        <span>Fallen Trees on Trail</span>
-      </label>
-    </p>
-    <p class="col s12 m6 l4">
-      <label>
-        <input id="Slippery" type="checkbox">
-        <span>Slippery</span>
-      </label>
-    </p>
-    <p class="col s12 m6 l4">
-      <label>
-        <input id="SharpStones" type="checkbox">
-        <span>Sharp Stones</span>
-      </label>
-    </p>
-    <p class="col s12 m6 l4">
-      <label>
-        <input id="Thorns" type="checkbox">
-        <span>Thorny Vegetation on the Edge</span>
-      </label>
-    </p>
-    <p class="col s12 m6 l4">
-      <label>
         <input id="Risk" type="checkbox">
         <span>Risk From Fallen Trees or Branches</span>
       </label>
@@ -148,19 +118,6 @@ window.propiedades = new Mission({
       }
     ).addTo(map);
 
-    // const geoJSONTrails = require("./trails.json");
-
-    // window.mappedTrails = L.geoJSON(geoJSONTrails, {
-    //   style: function(feature) {
-    //     return {
-    //       color: feature.properties.stroke,
-    //       opacity: 0.6,
-    //       dashArray: [7, 5]
-    //     };
-    //   }
-    // });
-    // map.fitBounds(window.mappedTrails.getBounds(), { padding: [82, 82] });
-    // mappedTrails.addTo(map);
     let circle = L.circle([window.Latitude.value, window.Longitude.value], {
       color: "red",
       fillColor: "#f03",
