@@ -294,9 +294,9 @@ const missionsElement = document.getElementById("missions");
 module.exports = missionsElement;
 
 // Collecting all Missions in a Set
-let Missions = new Set();
+let Properties = new Set();
 
-class Mission {
+class Properties {
   constructor({
     shortName = "shortName",
     title = "Title",
@@ -401,19 +401,19 @@ class Mission {
         }
       ).addTo(map);
 
-      const geoJSONTrails = require("./trails.json");
+      // const geoJSONTrails = require("./trails.json");
 
-      window.mappedTrails = L.geoJSON(geoJSONTrails, {
-        style: function(feature) {
-          return {
-            color: feature.properties.stroke,
-            opacity: 0.6,
-            dashArray: [7, 5]
-          };
-        }
-      });
-      map.fitBounds(window.mappedTrails.getBounds(), { padding: [82, 82] });
-      mappedTrails.addTo(map);
+      // window.mappedTrails = L.geoJSON(geoJSONTrails, {
+      //   style: function(feature) {
+      //     return {
+      //       color: feature.properties.stroke,
+      //       opacity: 0.6,
+      //       dashArray: [7, 5]
+      //     };
+      //   }
+      // });
+      // map.fitBounds(window.mappedTrails.getBounds(), { padding: [82, 82] });
+      // mappedTrails.addTo(map);
     };
     this.monitor = function() {
       navigator.geolocation.getCurrentPosition(

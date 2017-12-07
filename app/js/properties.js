@@ -1,12 +1,11 @@
-const Mission = require("./missions");
+const Menu = require("./menu");
 
-trails = new Mission({
-  shortName: "trails",
-  title: "Trail Condition",
-  databaseCollection: "TrailCondition",
+window.properties = new Mission({
+  shortName: "properties",
+  title: "Properties",
+  databaseCollection: "Properties",
   congratulatoryMessage: "Thanks for your help!",
-  description:
-    "Engage in the monitoring of Trail Conditions and participate in adaptive management by reporting incidents while walking in the trails system. Kullaberg Management will analyze measures to execute to resolve the reports.",
+  description: "Property values",
   image: require("../img/trail.jpg"),
   monitorSuccess: function() {
     let content = ``;
@@ -149,19 +148,19 @@ trails = new Mission({
       }
     ).addTo(map);
 
-    const geoJSONTrails = require("./trails.json");
+    // const geoJSONTrails = require("./trails.json");
 
-    window.mappedTrails = L.geoJSON(geoJSONTrails, {
-      style: function(feature) {
-        return {
-          color: feature.properties.stroke,
-          opacity: 0.6,
-          dashArray: [7, 5]
-        };
-      }
-    });
+    // window.mappedTrails = L.geoJSON(geoJSONTrails, {
+    //   style: function(feature) {
+    //     return {
+    //       color: feature.properties.stroke,
+    //       opacity: 0.6,
+    //       dashArray: [7, 5]
+    //     };
+    //   }
+    // });
     // map.fitBounds(window.mappedTrails.getBounds(), { padding: [82, 82] });
-    mappedTrails.addTo(map);
+    // mappedTrails.addTo(map);
     let circle = L.circle([window.Latitude.value, window.Longitude.value], {
       color: "red",
       fillColor: "#f03",

@@ -31,10 +31,6 @@ module.exports = function e(env) {
     // devtool: "cheap-module-source-map",
     module: {
       rules: [
-        // {
-        //   test: /\.(eot|ttf|woff|woff2|svg)$/,
-        //   loader: "url-loader?limit=100000000"
-        // },
         {
           test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
           loader: "url-loader?limit=10000000&mimetype=application/font-woff"

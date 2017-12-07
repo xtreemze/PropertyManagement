@@ -3,7 +3,3 @@ window.addEventListener("load", function() {
   foot.classList.add("footSlideUp");
   // foot.classList.add("fadeIn");
 });
-
-// window.addEventListener("load", function test() {
-//   tumlare.queryDB();
-// });
