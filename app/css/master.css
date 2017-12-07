@@ -1,0 +1,188 @@
+.transparent {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.breadcrumb {
+  font-size: 1rem !important;
+  line-height: 2rem;
+}
+
+#navigationBreadcrumbs {
+  margin-top: 1rem;
+}
+.breadcrumb:before {
+  font-size: 1.5rem !important;
+  margin: 0 0.3rem 0 0 !important;
+}
+
+#map {
+  height: 35vh;
+  /* width: 100%; */
+  z-index: 0;
+}
+
+.brand-logo {
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 0.9rem;
+  text-align: right;
+  margin-top: 1.2rem;
+  width: 4.8rem;
+  margin-right: 0.9rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#photoDisplay {
+  display: none;
+}
+
+tr.pika-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+#QuantityDisplay,
+#ObservationAreaDisplay {
+  font-size: 2.1rem;
+  font-weight: 200;
+}
+.meters {
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+
+footer.page-footer {
+  bottom: 0;
+  position: fixed;
+  padding-top: 0;
+  height: 4rem;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  div#toast-container {
+    bottom: 4.8rem;
+  }
+}
+
+.strong {
+  font-weight: 800;
+}
+
+#map2 {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 4rem;
+}
+
+.z12 {
+  z-index: 12;
+}
+
+main {
+  margin-bottom: 6rem !important;
+}
+
+.materialbox-caption,
+#material-box-overlay {
+  bottom: 4rem !important;
+}
+
+.fadeOut {
+  animation: fadeOut 0.5s ease-out forwards;
+  opacity: 1;
+  pointer-events: none;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.hidden,
+.hidden div {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in forwards !important;
+  opacity: 0 !important;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+.fullScreenCeleb {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  border-radius: 0.5rem !important;
+}
+
+.card .card-image img {
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+}
+
+.card .card-action {
+  background: none !important;
+}
+
+.footSlideUp {
+  animation: slideUp 0.8s ease-in-out forwards !important;
+}
+
+@keyframes slideUp {
+  0% {
+    bottom: -4rem;
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  100% {
+    bottom: 0rem;
+    opacity: 1;
+  }
+}
+
+footer.page-footer {
+  bottom: -4rem;
+  opacity: 0;
+}
