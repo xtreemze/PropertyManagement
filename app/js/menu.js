@@ -1,7 +1,7 @@
 const stitch = require("mongodb-stitch");
 
-const client = new stitch.StitchClient("citizensciencestitch-oakmw");
-const db = client.service("mongodb", "mongodb-atlas").db("citizenScience");
+const client = new stitch.StitchClient("propertymanagementstitch-ohgyx");
+const db = client.service("mongodb", "mongodb-atlas").db("Xique");
 const loadImage = require("blueimp-load-image");
 
 window.storedDB;
