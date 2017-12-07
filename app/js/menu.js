@@ -264,9 +264,9 @@ const missionsElement = document.getElementById("missions");
 module.exports = missionsElement;
 
 // Collecting all Missions in a Set
-let Properties = new Set();
+// let Properties = new Set();
 
-class Properties {
+class Propiedad {
   constructor({
     shortName = "shortName",
     title = "Title",
@@ -638,7 +638,7 @@ class Properties {
         </div>
         `;
 
-    Missions.add(this);
+    // Missions.add(this);
     // Add Mission Cards to DOM
     missionCardsHTML += this.card;
   }
@@ -674,4 +674,4 @@ window.addEventListener("DOMContentLoaded", function() {
   }, 290);
 });
 
-module.exports = Mission;
+module.exports = Propiedad;

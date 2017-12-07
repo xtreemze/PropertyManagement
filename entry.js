@@ -6,7 +6,7 @@ require("./node_modules/leaflet/dist/leaflet.js");
 require("./node_modules/leaflet.markercluster/dist/leaflet.markercluster");
 require("./app/js/master");
 require("./app/js/menu");
-require("./app/js/properties");
+require("./app/js/propiedad");
 // require("./node_modules/materialize-css/sass/materialize.scss");
 // require("./app/css/variables.scss");
 require("./node_modules/material-design-icons/iconfont/material-icons.css");

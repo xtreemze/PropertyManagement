@@ -1,6 +1,6 @@
-const Menu = require("./menu");
+const Propiedad = require("./menu");
 
-window.propiedades = new Mission({
+window.propiedades = new Propiedad({
   shortName: "propiedades",
   title: "Propiedades",
   databaseCollection: "Propiedades",
