@@ -1,6 +1,9 @@
+"use strict";
 const stitch = require("mongodb-stitch");
 
-const client = new stitch.StitchClient("propertymanagementstitch-ohgyx");
+const client = new stitch.StitchClient(
+  "propertymanagementstitch-ohgyx"
+);
 const db = client.service("mongodb", "mongodb-atlas").db("Xique");
 const loadImage = require("blueimp-load-image");
 
@@ -189,11 +192,20 @@ window.collectInputs = function(
         // $date: new Date(elements[e].value)
       };
     } else if (elements[e].id === "Longitude") {
-      window.data.Location.coordinates[0] = parseFloat(elements[e].value, 10);
+      window.data.Location.coordinates[0] = parseFloat(
+        elements[e].value,
+        10
+      );
     } else if (elements[e].id === "Latitude") {
-      window.data.Location.coordinates[1] = parseFloat(elements[e].value, 10);
+      window.data.Location.coordinates[1] = parseFloat(
+        elements[e].value,
+        10
+      );
     } else if (elements[e].id === "Altitude") {
-      window.data.Location.coordinates[2] = parseFloat(elements[e].value, 10);
+      window.data.Location.coordinates[2] = parseFloat(
+        elements[e].value,
+        10
+      );
     } else if (elements[e].type == "checkbox") {
       window.data[elements[e].id] = elements[e].checked;
     } else if (
@@ -227,13 +239,21 @@ window.offlineUp = function(databaseCollection) {
   let storageVariable = `${databaseCollection}OfflineData`;
   // try to upload offline data to DB when online
   if (window.localStorage[storageVariable] && navigator.onLine) {
-    offlineData = JSON.parse(window.localStorage.getItem(storageVariable));
+    offlineData = JSON.parse(
+      window.localStorage.getItem(storageVariable)
+    );
     client
       .login()
-      .then(() => db.collection(databaseCollection).insertMany(offlineData))
+      .then(() =>
+        db.collection(databaseCollection).insertMany(offlineData)
+      )
       .then(result => {
         window.localStorage.removeItem(storageVariable);
-        console.log("[MongoDB Stitch] Offline Updated:", result, offlineData);
+        console.log(
+          "[MongoDB Stitch] Offline Updated:",
+          result,
+          offlineData
+        );
         M.toast({
           html: "Reports Uploaded: " + offlineData.length,
           displayLength: 3000,
@@ -338,7 +358,10 @@ class Propiedad {
           console.log("[LocalDB Updated]", queryDBResult);
           // Track time of last local DB update
           window.lastUpdateLocalDB = new Date().getTime();
-          window.localStorage.setItem("lastUpdateLocalDB", lastUpdateLocalDB);
+          window.localStorage.setItem(
+            "lastUpdateLocalDB",
+            lastUpdateLocalDB
+          );
           window.lastUpdateLocalDB = window.localStorage.getItem(
             "lastUpdateLocalDB"
           );
@@ -480,7 +503,9 @@ class Propiedad {
           queryDBResultOriginal,
           parsedOfflineStorage
         );
-        queryDBResult = queryDBResultOriginal.concat(parsedOfflineStorage);
+        queryDBResult = queryDBResultOriginal.concat(
+          parsedOfflineStorage
+        );
         console.log("[OfflineDB Eval] Combined:", queryDBResult);
       } else {
         queryDBResult = queryDBResultOriginal;
@@ -499,7 +524,9 @@ class Propiedad {
       const geoJSONPoints = [];
 
       for (let i = queryDBResult.length - 1; i > -1; i--) {
-        let dbResponse = `<span>${new Date(queryDBResult[i].Date)}</span><br>`;
+        let dbResponse = `<span>${new Date(
+          queryDBResult[i].Date
+        )}</span><br>`;
 
         for (const key in queryDBResult[i]) {
           // For simplicity, do not show these database results:
@@ -624,19 +651,25 @@ class Propiedad {
     <div class="card">
       <div class="card-image">
         <img src="${this.image}">
-        <span class="card-title"><b>${this.title}</b></span>
+        <span class="card-title">
+          <b>${this.title}</b>
+        </span>
       </div>
       <div class="card-content">
         <div>${this.description}</div>
       </div>
       <div class="card-action">
-        <a class="pointer" onclick="${this.shortName}.monitor()">Monitoring</a>
-        <a class="pointer" onclick="${this.shortName}.queryDB()">Evaluation</a>
-        </div>
-        </div>
-        </div>
-        </div>
-        `;
+        <a class="pointer" onclick="${
+          this.shortName
+        }.monitor()">Monitoring</a>
+        <a class="pointer" onclick="${
+          this.shortName
+        }.queryDB()">Evaluation</a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
 
     // Missions.add(this);
     // Add Mission Cards to DOM

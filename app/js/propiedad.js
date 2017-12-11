@@ -1,3 +1,4 @@
+"use strict";
 const Propiedad = require("./menu");
 
 window.propiedades = new Propiedad({
@@ -14,7 +15,7 @@ window.propiedades = new Propiedad({
     <h3 class="col s12">${this.title}</h3>
     <h5 class="col s12">Datos generales</h5>
     <div class="col s12">
-    <div id="map"></div>
+      <div id="map"></div>
     </div>
     <section class="hide">
       <div class="input-field col s6 m3">
@@ -78,7 +79,6 @@ window.propiedades = new Propiedad({
         <span class="helper-text">Example: Many people, conflicts betwen hikers, horses, bicycles.</span>
       </div>
     </div>
-
     <section class="col s12 m6">
       <div class="row">
         <canvas height="64" class="col s12" id="photoPreview"></canvas>
@@ -86,16 +86,18 @@ window.propiedades = new Propiedad({
     </section>
     <div class="file-field input-field col s12 m6">
       <div class="file-path-wrapper col s12">
-        <input id="photoFilePath" accept="image/*" class="file-path validate" type="text" placeholder="Trail Photos">
+        <input id="photoFilePath" accept="image/*" class="file-path validate"
+          type="text" placeholder="Trail Photos">
       </div>
       <div class="btn large col s12">
         <i class="material-icons large">add_a_photo</i>
         <input id="Photos" accept="image/*;capture=camera" type="file">
       </div>
     </div>
-    <button class="col s12 btn btn-large waves-effect waves-light" type="submit" onclick="collectInputs('${
-      this.databaseCollection
-    }', '${this.congratulatoryMessage}')">Submit
+    <button class="col s12 btn btn-large waves-effect waves-light" type="submit"
+      onclick="collectInputs('${this.databaseCollection}', '${
+      this.congratulatoryMessage
+    }')">Submit
       <i class="material-icons right">send</i>
     </button>
   </form>
@@ -118,22 +120,28 @@ window.propiedades = new Propiedad({
       }
     ).addTo(map);
 
-    let circle = L.circle([window.Latitude.value, window.Longitude.value], {
-      color: "red",
-      fillColor: "#f03",
-      fillOpacity: 0.5,
-      radius: 5
-    })
+    let circle = L.circle(
+      [window.Latitude.value, window.Longitude.value],
+      {
+        color: "red",
+        fillColor: "#f03",
+        fillOpacity: 0.5,
+        radius: 5
+      }
+    )
       .addTo(map)
       .bindPopup("Your Location")
       .openPopup();
     let popup = L.popup();
 
-    window.radius = L.circle([window.Latitude.value, window.Longitude.value], {
-      color: "#0288d1",
-      fillColor: "#0d47a1",
-      fillOpacity: 0.5,
-      radius: geoReference.accuracy
-    }).addTo(map);
+    window.radius = L.circle(
+      [window.Latitude.value, window.Longitude.value],
+      {
+        color: "#0288d1",
+        fillColor: "#0d47a1",
+        fillOpacity: 0.5,
+        radius: geoReference.accuracy
+      }
+    ).addTo(map);
   }
 });
