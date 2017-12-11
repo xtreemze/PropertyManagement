@@ -1,9 +1,9 @@
 "use strict";
-import M from "materialize-css";
-import L from "leaflet";
 
-// const stitch = require("mongodb-stitch");
-import stitch from "mongodb-stitch";
+const M = require("materialize-css");
+const stitch = require("mongodb-stitch");
+const L = require("leaflet");
+// import stitch from "mongodb-stitch";
 
 const client = new stitch.StitchClient("propertymanagementstitch-ohgyx");
 const db = client.service("mongodb", "mongodb-atlas").db("Xique");

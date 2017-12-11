@@ -1,7 +1,7 @@
 "use strict";
 const Propiedad = require("./menu");
 // import M from "materialize-css";
-import L from "leaflet";
+const L = require("leaflet");
 
 window.propiedades = new Propiedad({
   shortName: "propiedades",
