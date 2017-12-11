@@ -1,9 +1,11 @@
 "use strict";
-const stitch = require("mongodb-stitch");
+import M from "materialize-css";
+import L from "leaflet";
 
-const client = new stitch.StitchClient(
-  "propertymanagementstitch-ohgyx"
-);
+// const stitch = require("mongodb-stitch");
+import stitch from "mongodb-stitch";
+
+const client = new stitch.StitchClient("propertymanagementstitch-ohgyx");
 const db = client.service("mongodb", "mongodb-atlas").db("Xique");
 const loadImage = require("blueimp-load-image");
 
@@ -11,14 +13,16 @@ window.storedDB;
 
 window.enableBox = function() {
   setTimeout(() => {
-    window.elem = document.querySelector(".materialboxed");
+    const elem = document.querySelector(".materialboxed");
+    window.elem = elem;
     window.instance = new M.Materialbox(elem);
   }, 300);
   // instance.open();
 };
 
 window.confetti = function() {
-  window.confettiId = document.getElementById("confettiId");
+  const confettiId = document.getElementById("confettiId");
+  window.confettiId = confettiId;
   confettiId.width = window.innerWidth;
   confettiId.height = window.innerHeight;
 
@@ -42,7 +46,7 @@ window.confetti = function() {
 
   function update() {
     let now = Date.now();
-    deltaTime = now - lastUpdateTime;
+    const deltaTime = now - lastUpdateTime;
 
     for (let i = confettiPieces.length - 1; i >= 0; i--) {
       let p = confettiPieces[i];
@@ -123,7 +127,7 @@ const updateDB = function(database = "", dataset = {}) {
         });
       })
       .catch(error => {
-        // console.error("[MongoDB Stitch] Error: ", error);
+        console.error("[MongoDB Stitch] Error: ", error);
         // Save offline if offline
         let offlineData = [dataset];
         let combinedData = [];
@@ -160,11 +164,11 @@ const updateDB = function(database = "", dataset = {}) {
  * @param {any} Database Collection
  * @param {string} A Congratulatory Message
  */
-window.collectInputs = function(
+const collectInputs = function(
   databaseCollection = {},
   congratulatoryMessage = ""
 ) {
-  window.form = parent.document.getElementsByTagName("form")[0];
+  const form = parent.document.getElementsByTagName("form")[0];
   window.data = {
     Location: {
       type: "Point",
@@ -176,9 +180,9 @@ window.collectInputs = function(
   }
 
   // Processing Form data then Saving to Database
-  window.elements = form.elements;
+  const elements = form.elements;
 
-  for (e = 0; e < elements.length; e++) {
+  for (let e = 0; e < elements.length; e++) {
     if (
       elements[e].id === "Photos" ||
       elements[e].id === "photoFilePath" ||
@@ -234,12 +238,13 @@ window.collectInputs = function(
   // Celebrate in style with cofetti
   window.confetti();
 };
+window.collectInputs = collectInputs;
 
-window.offlineUp = function(databaseCollection) {
+const offlineUp = function(databaseCollection) {
   let storageVariable = `${databaseCollection}OfflineData`;
   // try to upload offline data to DB when online
   if (window.localStorage[storageVariable] && navigator.onLine) {
-    offlineData = JSON.parse(
+    let offlineData = JSON.parse(
       window.localStorage.getItem(storageVariable)
     );
     client
@@ -268,11 +273,12 @@ window.offlineUp = function(databaseCollection) {
           classes: "yellow darken-2"
         });
         window.offlineUploadAttempt = setTimeout(() => {
-          updateDB(database);
+          updateDB(databaseCollection);
         }, 30000);
       });
   }
 };
+window.offlineUp = offlineUp;
 // Empty variable to gather and hold html for mission cards in memory
 let missionCardsHTML = ``;
 
@@ -295,15 +301,19 @@ class Propiedad {
     databaseCollection = "mongoDbCollection",
     congratulatoryMessage = "Congratulations!",
     // Data for form submission
-    monitor = ``,
+    // monitor = ``,
     // Data retrieval and display
-    analyze = ``,
+    // analyze = ``,
     // Each mission should have a representative image
     image = require("../img/trail.jpg"),
     monitorSuccess,
-    analyzeSuccess,
-    queryDB
+    analyzeSuccess
+    // queryDB
   }) {
+    const missions = document.getElementById("missions");
+    const navigationBreadcrumbs = document.getElementById(
+      "navigationBreadcrumbs"
+    );
     this.shortName = shortName;
     this.title = title;
     this.description = description;
@@ -330,10 +340,12 @@ class Propiedad {
         `;
 
       window.scrollTo(0, 0);
-      window.map = L.map("map2", {
+
+      const map = L.map("map2", {
         tapTolerance: 64,
         zoomControl: false
       });
+      window.map = map;
       // .fitWorld()
       // .setZoom(2);
 
@@ -357,7 +369,8 @@ class Propiedad {
           localStorage.setItem(database, JSON.stringify(queryDBResult));
           console.log("[LocalDB Updated]", queryDBResult);
           // Track time of last local DB update
-          window.lastUpdateLocalDB = new Date().getTime();
+          let lastUpdateLocalDB = new Date().getTime();
+          window.lastUpdateLocalDB = lastUpdateLocalDB;
           window.localStorage.setItem(
             "lastUpdateLocalDB",
             lastUpdateLocalDB
@@ -385,14 +398,12 @@ class Propiedad {
             });
           }
         });
-      var OSMMapnik = L.tileLayer(
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-          maxZoom: 19,
-          attribution:
-            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }
-      ).addTo(map);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
 
       // const geoJSONTrails = require("./trails.json");
 
@@ -429,7 +440,7 @@ class Propiedad {
           let multiSelect = document.querySelectorAll("select");
           for (const element in multiSelect) {
             if (multiSelect.hasOwnProperty(element)) {
-              const newInstance = new M.Select(multiSelect[element]);
+              new M.Select(multiSelect[element]);
             }
           }
           // let datePicker = document.querySelectorAll(".datepicker");
@@ -634,7 +645,7 @@ class Propiedad {
 
       markers.addLayer(reports);
 
-      map.addLayer(markers);
+      window.map.addLayer(markers);
       markers.on("spiderfied", function(a) {
         a.cluster._icon.classList.remove("fadeIn");
         a.cluster._icon.classList.add("fadeOut");
@@ -678,7 +689,13 @@ class Propiedad {
 }
 
 // Show missinos in the front page
-window.showMissions = function(seconds = 290) {
+const showMissions = function(seconds = 290) {
+  const loading = document.getElementById("loading");
+  const missions = document.getElementById("missions");
+  const navigationBreadcrumbs = document.getElementById(
+    "navigationBreadcrumbs"
+  );
+
   loading.classList.remove("fadeOut");
   loading.classList.add("fadeIn");
   missions.innerHTML = "";
@@ -694,8 +711,14 @@ window.showMissions = function(seconds = 290) {
     }, 290);
   }, seconds);
 };
+window.showMissions = showMissions;
 
 window.addEventListener("DOMContentLoaded", function() {
+  const loading = document.getElementById("loading");
+  const missions = document.getElementById("missions");
+  const navigationBreadcrumbs = document.getElementById(
+    "navigationBreadcrumbs"
+  );
   // Add HTML Mission Cards to the DOM
   missions.innerHTML = missionCardsHTML;
   navigationBreadcrumbs.innerHTML = `

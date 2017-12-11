@@ -1,5 +1,7 @@
 "use strict";
 const Propiedad = require("./menu");
+// import M from "materialize-css";
+import L from "leaflet";
 
 window.propiedades = new Propiedad({
   shortName: "propiedades",
@@ -104,6 +106,7 @@ window.propiedades = new Propiedad({
 </div>
 <canvas class="fullScreenCeleb" id="confettiId"> </canvas>
 `;
+    const missions = document.getElementById("missions");
     missions.innerHTML = content;
 
     const map = L.map("map", {
@@ -111,28 +114,22 @@ window.propiedades = new Propiedad({
       zoomControl: false
     }).setView([window.Latitude.value, window.Longitude.value], 13);
 
-    var OSMMapnik = L.tileLayer(
-      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      {
-        maxZoom: 19,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }
-    ).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
-    let circle = L.circle(
-      [window.Latitude.value, window.Longitude.value],
-      {
-        color: "red",
-        fillColor: "#f03",
-        fillOpacity: 0.5,
-        radius: 5
-      }
-    )
+    L.circle([window.Latitude.value, window.Longitude.value], {
+      color: "red",
+      fillColor: "#f03",
+      fillOpacity: 0.5,
+      radius: 5
+    })
       .addTo(map)
       .bindPopup("Your Location")
       .openPopup();
-    let popup = L.popup();
+    L.popup();
 
     window.radius = L.circle(
       [window.Latitude.value, window.Longitude.value],
@@ -140,7 +137,7 @@ window.propiedades = new Propiedad({
         color: "#0288d1",
         fillColor: "#0d47a1",
         fillOpacity: 0.5,
-        radius: geoReference.accuracy
+        radius: window.geoReference.accuracy
       }
     ).addTo(map);
   }

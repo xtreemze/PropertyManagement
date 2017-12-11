@@ -37,6 +37,8 @@
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
     "cssnano-preset-advanced": "^4.0.0-rc.2",
+    "eslint": "^4.13.0",
+    "eslint-plugin-react": "^7.5.1",
     "exif-orientation-image": "^1.0.1",
     "extract-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
