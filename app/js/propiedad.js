@@ -19,7 +19,7 @@ window.propiedades = new Propiedad({
     <div class="col s12">
       <div id="map"></div>
     </div>
-    <section class="hide">
+    <section class="">
       <div class="input-field col s6 m3">
         <input disabled id="Latitude" type="text" value="${
           window.geoReference.lat
@@ -32,55 +32,24 @@ window.propiedades = new Propiedad({
         }">
         <label for="Longitude">Longitud</label>
       </div>
-      <p class="col s12 m6 l4">
-        <label>
-          <input id="Resolved" type="checkbox">
-          <span>Resolved</span>
-        </label>
-      </p>
+
     </section>
-    <h5 class="col s12">Select All that Apply</h5>
-    <p class="col s12 m6 l4">
-      <label>
-        <input id="RootsExposed" type="checkbox">
-        <span>Roots Exposed</span>
+    <p class="col s12">
+      <label for="Uso">
+        <input type="radio" name="Uso" id="Uso">
       </label>
     </p>
-    <p class="col s12 m6 l4">
-      <label>
-        <input id="Flooded" type="checkbox">
-        <span>Flooded</span>
+    <p class="col s12">
+      <label for="Nombre">
+        <input type="text" name="Nombre" id="Nombre">
       </label>
     </p>
-    <p class="col s12 m6 l4">
-      <label>
-        <input id="Risk" type="checkbox">
-        <span>Risk From Fallen Trees or Branches</span>
+    <p class="col s12">
+      <label for="Propietarios">
+        <input type="text" name="Propietarios" id="Propietarios">
       </label>
     </p>
-    <div class="input-field col s12 m6 l4">
-      <select id="Erosion">
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
-      </select>
-      <label for="Erosion">Erosion</label>
-    </div>
-    <h5 class="col s12">Please Describe</h5>
-    <div class="divider"></div>
-    <div class="section">
-      <div class="input-field col s12 m6">
-        <textarea id="SupportInfrastructure" class="materialize-textarea"></textarea>
-        <label for="SupportInfrastructure">Support Infrastructure</label>
-        <span class="helper-text">Example: handrails, ropes, steps.</span>
-      </div>
-      <div class="input-field col s12 m6">
-        <textarea id="UsePerception" class="materialize-textarea"></textarea>
-        <label for="UsePerception">
-          Trail Usage</label>
-        <span class="helper-text">Example: Many people, conflicts betwen hikers, horses, bicycles.</span>
-      </div>
-    </div>
+
     <section class="col s12 m6">
       <div class="row">
         <canvas height="64" class="col s12" id="photoPreview"></canvas>
