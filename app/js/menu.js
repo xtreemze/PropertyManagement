@@ -158,6 +158,7 @@ const updateDB = function(database = "", dataset = {}) {
       });
   }
 };
+
 /**
  *  Function to Collect Data, send to Database and Congratulate User
  *
