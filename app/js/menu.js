@@ -337,7 +337,7 @@ class Propiedad {
       <a onclick="showMissions(600)" class="pointer breadcrumb">${
         this.title
       }</a>
-        <a class="pointer breadcrumb">Evaluation</a>
+        <a class="pointer breadcrumb">Consultar Datos</a>
         `;
 
       window.scrollTo(0, 0);
@@ -435,7 +435,7 @@ class Propiedad {
           <a onclick="showMissions(600)" class="pointer breadcrumb">${
             this.title
           }</a>
-          <a class="pointer breadcrumb">Monitoring</a>
+          <a class="pointer breadcrumb">Registrar propiedad</a>
           `;
           M.updateTextFields();
           let multiSelect = document.querySelectorAll("select");
@@ -673,10 +673,10 @@ class Propiedad {
       <div class="card-action">
         <a class="pointer" onclick="${
           this.shortName
-        }.monitor()">Monitoring</a>
+        }.monitor()">Registrar propiedad</a>
         <a class="pointer" onclick="${
           this.shortName
-        }.queryDB()">Evaluation</a>
+        }.queryDB()">Consultar Datos</a>
       </div>
     </div>
   </div>
@@ -704,7 +704,7 @@ const showMissions = function(seconds = 290) {
     window.scrollTo(0, 0);
     missions.innerHTML = missionCardsHTML;
     navigationBreadcrumbs.innerHTML = `
-    <a class="pointer breadcrumb">Missions</a>
+    <a class="pointer breadcrumb">Inicio</a>
     `;
     setTimeout(() => {
       loading.classList.remove("fadeIn");
@@ -723,7 +723,7 @@ window.addEventListener("DOMContentLoaded", function() {
   // Add HTML Mission Cards to the DOM
   missions.innerHTML = missionCardsHTML;
   navigationBreadcrumbs.innerHTML = `
-  <a class="pointer breadcrumb">Missions</a>
+  <a class="pointer breadcrumb">Inicio</a>
   `;
   window.scrollTo(0, 0);
   setTimeout(() => {

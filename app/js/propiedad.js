@@ -34,18 +34,31 @@ window.propiedades = new Propiedad({
       </div>
 
     </section>
-    <p class="col s12">
-      <label for="Uso">
-        <input type="radio" name="Uso" id="Uso">
+    <p>
+      <label for="Residencial">
+      <input type="radio" name="Uso" id="Residencial">
+      <span>Residencial</span>
+      </label>
+    </p>
+    <p>
+      <label for="Comercial">
+      <input type="radio" name="Uso" id="Comercial">
+      <span>Comercial</span>
+      </label>
+    </p>
+    <p>
+      <label for="Industrial">
+      <input type="radio" name="Uso" id="Industrial">
+      <span>Industrial</span>
       </label>
     </p>
     <p class="col s12">
-      <label for="Nombre">
+      <label for="Nombre">Nombre
+      </label>
         <input type="text" name="Nombre" id="Nombre">
-      </label>
-    </p>
+     </p>
     <p class="col s12">
-      <label for="Propietarios">
+      <label for="Propietarios">Propietarios
         <input type="text" name="Propietarios" id="Propietarios">
       </label>
     </p>
