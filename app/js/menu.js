@@ -20,94 +20,6 @@ window.enableBox = function() {
   // instance.open();
 };
 
-window.confetti = function() {
-  const confettiId = document.getElementById("confettiId");
-  window.confettiId = confettiId;
-  confettiId.width = window.innerWidth;
-  confettiId.height = window.innerHeight;
-
-  let ctx = window.confettiId.getContext("2d");
-  let confettiPieces = [];
-  let numberConfettiPieces = 52;
-  let lastUpdateTime = Date.now();
-
-  function randomColor() {
-    let colors = [
-      "#d78a11",
-      "#0D47A1",
-      "#ffab40",
-      "#0496FF",
-      "#FFE821",
-      "#b7e94d",
-      "#90a913"
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-  }
-
-  function update() {
-    let now = Date.now();
-    const deltaTime = now - lastUpdateTime;
-
-    for (let i = confettiPieces.length - 1; i >= 0; i--) {
-      let p = confettiPieces[i];
-
-      if (p.y > confettiId.height) {
-        confettiPieces.splice(i, 1);
-        continue;
-      }
-      p.y += p.gravity;
-      p.rotation += p.rotationSpeed * deltaTime;
-    }
-
-    lastUpdateTime = now;
-
-    // setTimeout(update, 2);
-    requestAnimationFrame(update);
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, confettiId.width, confettiId.height);
-
-    confettiPieces.forEach(function(p) {
-      ctx.save();
-
-      ctx.fillStyle = p.color;
-
-      ctx.translate(p.x + p.size / 2, p.y - p.size / 2);
-      ctx.rotate(p.rotation);
-
-      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-
-      ctx.restore();
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  function ConfettiPieces(x, y) {
-    this.x = x;
-    this.y = y;
-    this.size = (Math.random() * 0.5 + 0.75) * 36;
-    this.gravity = (Math.random() * 0.5 + 0.75) * 10;
-    this.rotation = Math.PI * 2 * Math.random();
-    this.rotationSpeed = Math.PI * 2 * (Math.random() - 0.5) * 0.0015;
-    this.color = randomColor();
-  }
-
-  while (confettiPieces.length < numberConfettiPieces) {
-    confettiPieces.push(
-      new ConfettiPieces(
-        Math.random() * confettiId.width,
-        Math.random() * -confettiId.height
-      )
-    );
-  }
-  setTimeout(() => {
-    update();
-    draw();
-  }, 172);
-};
-// confetti();
 const updateDB = function(database = "", dataset = {}) {
   let datasetContent = dataset;
   const storageVariable = `${database}OfflineData`;
@@ -235,9 +147,6 @@ const collectInputs = function(
     displayLength: 4000,
     classes: "blue darken-2"
   });
-
-  // Celebrate in style with cofetti
-  window.confetti();
 };
 window.collectInputs = collectInputs;
 
